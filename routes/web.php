@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Models\product;
+use Database\Seeders\ProductSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('shop', function () {
+
+    $products = product::all();
+    return view('shop.index', compact('products'));
+});
+
+Route::get('/shop/{{ $product->id }}', function () {
+   
+    return view('shop.show');
+});
+
+Route::get('cart', function () {
+    return view('cart.cart');
 });

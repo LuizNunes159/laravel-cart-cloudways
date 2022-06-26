@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -15,6 +16,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique()->nullable(false);
+            $table->string('details')->nullable(false);
+            $table->text('description')->nullable(false);
+            $table->text('brand')->nullable(false);
+            $table->double('price')->nullable(false);
+            $table->double('shippin_cost');
+            $table->string('image_path')->nullable(false);
             $table->timestamps();
         });
     }
